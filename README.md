@@ -57,12 +57,14 @@ Every tool description starts with `READ-ONLY.`, `WRITES DATA.` or
 
 > Ready-made configs for every client: [paperoffice-mcp-setup](https://github.com/paperoffice-ai/paperoffice-mcp-setup)
 
-### Marketplace plugins
+### Registry, marketplaces and skills
 
-| Marketplace | Repository |
-|-------------|------------|
-| Cursor Marketplace | [paperoffice-cursor-plugin](https://github.com/paperoffice-ai/paperoffice-cursor-plugin) |
+| Where | What |
+|-------|------|
+| [Official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=paperoffice) | `io.github.paperoffice-ai/paperoffice-mcp` — clients that read the registry find PaperOffice by name |
+| Cursor Marketplace | [paperoffice-cursor-plugin](https://github.com/paperoffice-ai/paperoffice-cursor-plugin) — MCP + five Agent Skills |
 | xAI Plugin Marketplace (Grok Build) | [paperoffice-grok-plugin](https://github.com/paperoffice-ai/paperoffice-grok-plugin) |
+| Claude Code plugin / claude.ai skills | [paperoffice-skills](https://github.com/paperoffice-ai/paperoffice-skills) — how an agent should work with the API and the MCP tools |
 
 ### REST API — paste the docs into your AI
 
@@ -70,14 +72,14 @@ Every tool description starts with `READ-ONLY.`, `WRITES DATA.` or
 https://api.paperoffice.ai/latest/docs/llms.txt
 ```
 
-The collection is generated live from the API catalog. Tell your assistant what
-you need and it writes the call:
+The guide is generated live from the API catalog. Tell your assistant what you
+need and it writes the call:
 
 ```bash
-curl -X POST https://api.paperoffice.ai/latest/job/add \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+curl -X POST https://api.paperoffice.ai/latest/job/add/paperoffice_aiocr___generate \
+  -H "Authorization: Bearer $PAPEROFFICE_API_KEY" \
   -F "file=@invoice.pdf" \
-  -F "tool_id=po_aiocr_analyze"
+  -F "ocr_mode=text"
 ```
 
 ## Developer resources
@@ -88,6 +90,8 @@ curl -X POST https://api.paperoffice.ai/latest/job/add \
 | [llms.txt](https://api.paperoffice.ai/latest/docs/llms.txt) | Machine-readable API guide for agents |
 | [Postman collection](https://api.paperoffice.ai/latest/docs/postman) | Live, generated from the catalog |
 | [API examples](https://paperoffice.ai/en/developer/cookbook/) | Copy-paste prompts and recipes |
+| [Cookbook repository](https://github.com/paperoffice-ai/cookbook) | 38 recipes in Python, Node and curl, 8 AI prompts, MCP setup guides |
+| [Agent Skills](https://github.com/paperoffice-ai/paperoffice-skills) | Procedures for agents: integration, invoices, OCR, documents, tool discovery |
 | [Get an API key](https://app.paperoffice.ai) | Free account |
 | [Partner program](https://paperoffice.ai/en/partner/) | Reseller and integration partners |
 
