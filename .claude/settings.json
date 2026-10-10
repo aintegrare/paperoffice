@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "paperoffice": {
+      "source": {
+        "source": "github",
+        "repo": "paperoffice-ai/paperoffice-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "paperoffice-skills@paperoffice": true
+  }
+}
